@@ -1,0 +1,4 @@
+172.19.0.1 - - [27/Jul/2020:15:08:38 +0000] "GET / HTTP/1.1" 404 555 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" "-"
+172.19.0.1 - - [27/Jul/2020:15:08:38 +0000] "GET /favicon.ico HTTP/1.1" 404 555 "http://localhost:8888/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" "-"
+172.19.0.1 - - [27/Jul/2020:15:09:42 +0000] "GET /application-service/ HTTP/1.1" 200 66 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" "-"
+172.28.0.1 - - [27/Jul/2020:16:08:05 +0000] "GET /application-service/ HTTP/1.1" 502 559 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36" "-"

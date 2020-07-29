@@ -1,0 +1,49 @@
+version: "3"
+services:
+  tcejorpikit-db:
+    image: 'postgres:10'
+    ports:
+      - 5432:5432
+    volumes:
+      - './app-db/init-app-db.sh:/docker-entrypoint-initdb.d/init-app-db.sh'
+      - './app-db/init-script:/docker-entrypoint-initdb.d/init-script'
+    container_name: db-container
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "root"
+
+  application-service:
+    env_file: .env
+    build:
+      context: ./application-service
+    container_name: application-service
+    volumes:
+      - ./application-service:/application-service:cached
+    working_dir: /application-service/
+    restart: unless-stopped
+    links:
+      - tcejorpikit-db
+    depends_on:
+      - tcejorpikit-db
+    command: sh -c "npm i --no-optional && npm start"
+  nginx:
+    image: nginx:alpine
+    container_name: gateway_container
+    restart: unless-stopped
+    tty: true
+    ports:
+      - '8888:80'
+      - "443:443"
+    volumes:
+      - ./applicationvng.conf:/etc/nginx/conf.d/default.conf
+      - './application-service/log:/var/log/nginx'
+    links:
+      - application-service
+    depends_on:
+      - application-service
+    command:
+      - nginx
+      - '-g'
+      - daemon off;
+  # author MinhTran

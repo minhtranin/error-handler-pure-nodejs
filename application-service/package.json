@@ -1,0 +1,17 @@
+{
+  "name": "application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "MinhTran",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^8.0.1",
+    "nodemon": "^2.0.4",
+    "pg": "^8.3.0"
+  }
+}
